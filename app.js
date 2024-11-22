@@ -75,6 +75,10 @@ app.get("/transactions/:id", async (request, response) => {
   }
 });
 
+app.get("/testing", async (request, response) => {
+  response.send("Hello");
+});
+
 app.post("/transactions", authenticateToken, async (request, response) => {
   const { amount, transactionType, status } = request.body;
   const { userId } = request;
@@ -193,10 +197,6 @@ app.get("/users/", async (request, response) => {
   } catch (error) {
     response.send(error.message);
   }
-});
-
-app.get("/", async (req, res) => {
-  res.send("Hello");
 });
 
 initializeDbAndServer();
